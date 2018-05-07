@@ -33,7 +33,7 @@ void loop() {
 //////////////////////////////////////////////////////////////////
 
 #include <Servo.h>
-
+int LEDGABI = 12;
 int LED_verde = 3;
 int LED_amarillo = 4;
 int LED_rojo = 5;
@@ -47,6 +47,7 @@ int estado = 0;
 void setup(){
 
  Serial.begin(9600);
+ pinMode(LEDGABI, OUTPUT);
  pinMode(LED_verde, OUTPUT);
  pinMode(LED_amarillo, OUTPUT);
  pinMode(LED_rojo, OUTPUT);
@@ -62,9 +63,11 @@ void loop(){
  
 if (Serial.available()> 0){
 estado = Serial.read();
+Serial.println("sdfs");
 }
 
-if (estado == '1'){
+if (estado == 'L'){
+ digitalWrite(LEDGABI, HIGH);
  digitalWrite(LED_verde, HIGH);
  digitalWrite(LED_amarillo, HIGH);
  digitalWrite(LED_rojo, HIGH);
